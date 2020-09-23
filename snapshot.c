@@ -615,6 +615,8 @@ void *rdbLoadSnapshotInfo(RedisModuleIO *rdb, int encver)
         RedisModule_Free(buf);
     } while (1);
 
+    // TODO: Load used_node_ids
+
     info->loaded = true;
 
     return info;
@@ -644,6 +646,8 @@ void rdbSaveSnapshotInfo(RedisModuleIO *rdb, void *value)
 
     /* Last node marker */
     RedisModule_SaveUnsigned(rdb, 0);
+
+    // TODO: Load used_node_ids
 }
 
 static void clearSnapshotInfo(void *value)
